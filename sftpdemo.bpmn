@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:zeebe="http://camunda.org/schema/zeebe/1.0" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_0x8jnzn" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.47.0" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.9.0">
+  <bpmn:process id="Process_0cmhcam" name="sftp connecter" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1">
+      <bpmn:outgoing>Flow_1ct7lkd</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="Flow_1ct7lkd" sourceRef="StartEvent_1" targetRef="Activity_Sftp_Connector" />
+    <bpmn:endEvent id="Event_02l60r4" name="end">
+      <bpmn:incoming>Flow_02uq8xv</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_02uq8xv" sourceRef="Activity_Sftp_Connector" targetRef="Event_02l60r4" />
+    <bpmn:serviceTask id="Activity_Sftp_Connector" name="push docs" zeebe:modelerTemplate="com.infosys.camundaconnectors.file.sftp.v1" zeebe:modelerTemplateVersion="1" zeebe:modelerTemplateIcon="data:image/svg+xml;charset=utf-8,%0A%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; xmlns:xlink=&#39;http://www.w3.org/1999/xlink&#39; width=&#39;18&#39; height=&#39;18&#39; viewBox=&#39;0 0 18 18&#39;%3E%3Cimage xlink:href=&#39;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAgAAAAGyBAMAAABgvGEqAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAbUExURQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJRR4iAAAAAIdFJOUwAVNGB7lLfgyXI+iAAADhpJREFUeNrtnct3GrkSh+nm5SVx4jFLP07GLIntzLBkYjvDMvFjhqXvTeKwdJy5Y5Z2DE3/2ffE0EBDSyqVoCWVVCeLOR67aX3oUfVTqVQogCx4e6Vml82CzRb0YmVr2wygod7+OKpZ3AHiVdi1vQAqKwHw5PYIiOORvQA6KwEQ2zsJ9FYDYMd1AE0PwAPwADwAD8AD8ADsBaDoSXsAHoAH4AF4AB6AB+ABeADWWLA3thUBeLenz3YxL7616MwrAtBq/8hLssWYEoD4Tvq9W7QASIvSYUwMwK3ka1eoAZDdmqtTAxCpv7bdAGLlOdB5ACPLAdRUAURIAHUqALAZDhUqAG6RAEIqAND7+x0aAH6go8oyCQBDhQyXA5sBXBw926FShs/LI43WUwNgb2ZPYl0PwAPwADwAD8AD8AA8AA/AA/AAPAAPwAPwADwAD8ADsB/Ai2dLMoAS9e/49NnGB9b/unm2r/exsQCC51ZsTlqxvz9pxrgVZ+NmjFtxc/9sfR2q8I7Kl5FuxddxMwyXxV9O+lEyci6TLvUl9WXE9tm4XadHfBAHMXmLeJ26HDtgvG3ujgsAOEm7oRPtjx+ZACpuABgwAWy4AYCd7dRwA0DsPICa7wEMq7s+BzgyCbIzHqtuABi67gc8uR0K8DL+Sq67wslBqac9kvbrpHkPYgAFkpbM8bfCaHBAE0CyyrNLGwbCdcJqS/y8D+xfEXoKVlvi6bddBdASKkKFvshZtto6Yqlf8aC4/ZtkyH00S6wv/noBncRii8UDvEUZAGSRt7/eB8cgbh5gpbTXII4+wFey10rCaBjiLVtsZWE0DImXLLaKMBqG/Q7haHjWS0gCgIzvEmCYUI6GpyvFD4oAIE4OaU0M4uaGlAF0AQBIa2KgWJ8yAJDaQ1kTA7WNsCYGG96ENTHYpgdhTQy2xBPWxEogJ4+wJlYGufmENbEqKNAjrIltgLQOwppYHaR2EdbEYJ2bsCbWAk1vhDUx2ApPWBOD+XiENTGYl09YE4PFeYQ1MVikT1cTA4pdAdlEOehXS1YTg85uZDWxMhAAWU0M6uKR1cSgTj5ZTQwa5pHVxKCBPllNDCr1kNXEWsCGkdXEoGObrCYGnd3JamLQ9Z2sJhYDPTyymhjUx5fUxAJbHCbweTCwJhbsn30dBw7/fjk0HwNY6QFGjeH7dF2rzxmry6SOFNvOf/7W6yugnXOfennK/xZKUK0PRur18nnUc1ZgKShm0pIsfcJ56v/eiIf2I3SscAH8nvmCNd0AePcqgid3iCbGKLe0SEADgHi4o7y8izWxA+C5fB0AmJfBwB084Xq5xf70j/oBsMYu3MUXaWIh5w1GNf0AGE2EB3kin7kBrs2gCUCkFA0Lo6YQXqJIE4DsLgBXugS/Kai19M0AAAM1sZeviQWiSdgAAJmv3gcD4GtiwjozTQMAPCoEg6LpUlht7NYAAAO2fwfY8uMvmH2JD9cGIGMCl6iOwnWZijKV2vQB+ICPhgVO80Kxsc9HR2d95iSgD8ADPhoWhE2pKWD0PNsGHdYkoA/AEz4aFmhivYyOFvQYzqA+AEMVqZPLKtPlLDFmwRwARM91zP/qsyeihZkNIHbzNLEwe7XtZpdrXH7VBTtUBjD5WfCbyBWS2O7gzZep7/qaMTXWMgEMRJ6nCoClpzQVdvx4mljKD2wzFscdHQAWYrQ2PhjkamIVxof0M38OA7CZqniXmlCj1P/a5T417aJe44NBriZWZXgbncyfwwBkB+Nsv5Xx1DLLIZfbGhWEDVVGyNHI/PBcAYR8ADKpTxxNrMrQv5I59v7m6vRoRwuA9M8fZIU+IKx01dm7Wf/7cnlyuFsDvup6AHS5AGTSHznDZaHs7qcapCvlBKDDAyB1Kp4zYS7KIdE7SwBI1QrlaGLL0XB0UjMEAHcISJ0C4GhiWZLw6KJmBIAebxWQiIb5XmN2fMNAkCuAgLsMSuW98DSxLmNH6Fw7gBLXE6zKAOAFTkxNNHqjGUCdGwtI5b7xNDFO+flP/FcdLhW6XimAhf2KJnprVDBeeBtjkgkS0UoBbPNlYan8V+6E0eU1aUcbgC2BIiQRDQs0se0YTiAvAMH+nyJNUOoQAHfNDCXSM3IAAFWFpY6B8L0mvoBzZwaAB5VoWJAnJtgbahsBoM0IBmFHwQR5Yi1ws/QBqKlEw6I8MUGKyLUBAAasdx5KAWDh+gXaLm0AHhW2RiHyUQu4M6sNQFNmsweTTtOBLUG6AAxVtkZBi2bQAc1AugBcq2yNwtym4E/IGNAEYFSTy3mQ0sSm9hqQLKkJwH8ks16kNLGZvewJh6AeAEPpvCcpTWzO3vYFk4AeAE18i2R5Le3KL7yCFgAfeYMaeB4YPmKCzF5wnfWqo8VDPhdrAXCOnNbRc2bwlh2L5aAJLi4Af/A9G+DhNrlVM+yyloG8AYh3KArrAFAo/MbwBfMEcP/vJefYnFwwKOs4Lh0iGmjZGQIE+NDaQJB9pBd7WWMs/TnGAJC9RpEXPL7YOzq+urlfiBUrmQucMQBkC6SxNLHgZ8MzlefAbABSW6M8TYydi9gxGoD0pMb6fLbLWTcagHRNBNaq0WdG3VWjJ0HpqhgsTazLFN4qRi+D0nVReoIdtuXPrmpyhGBPbchFw7O34GcH1DIYp/qGcQDAxaE6jNhhg3kwp6UpGII9Vbo8GOsPyswdyL4wHNYJQLpCHqvLFFmnEspiQUQnAOkaiQ3BHuNSF+iIJTGdAKSrZDI1sW62/LQFEEV1ApCMhjnrZiNTgHoFkcU1ApC/PovpOS0liUUXR8d/szZmTAEgGw3P2nnLehTXdkwDIF8unB08dGUOLZoCQDYa5oWPdZnNeVMAVGSjYQ4ywOnxpnEAqrLRMG/Q9CQ2500BsCEbDfPyxLYlNudNASBfJpWTJyZaB6KCeQAQhXI5L9CAb86bAqAlGw1zfccQvuVrCgBEtXBe9NAAp2iaAgBRL54XPwY9YKqwMQAQNwZ0eX9ShGZomgIAcWdEh9tpXoGS5c0BIB0NC0W0YuYW9T96zw6vMBoWy6jBe0hyiiEAMFcniV2HzTSCUVZd4dN5ewf75OP5vznJ+g3pp2JuD4M4j8H+2Xi3eMRNztBv0luj1GrsY8rFk6qxj2lMhRIATHcmdckA5tIQzLxhrGGujSkhVg5jDREN07p3EnN3Fql7JzG3p5G6d7IvHw3Tuncylo+GSd07GaDaQujeyRA1nAndO4lb0bp0AOB8mg5i6SAUDZO6dxIX12DcR0LRMKl7J3HiDqF7J3FNIaSJ4W6RrdIBgJvPCWliXSUABDQxnFNLSBPDhTWENDFcYEtHEwtw0gYdTQwXDRPSxLB9mYwmhp3NyGhi2PWMjCaG9WjIaGIbSJ+2Sw2AbFRDRhPDKhtkNDGstkVGE+sgv0kymlgXOZbJaGLY5YyMJoZ1aMhoYliXlkqiXIANaqhoYui4noomhlZ2qGhiZWw7ikQAoIcyFU2sigUQEJGE8P4MEUmogfZo+zTi4S46punRCAdjdFjfIeEKFmN0R26Q2Bmox2hxdyOmoAn18F9jJSbgCqk0osi+tMeeSGh6yBIzk81ORV7s2Wn7PW7NfegyQMJUJlAKhlrKSoQA4JyZPh0AOHe2Qab9yIiOzhj4puhGWW9YZ7ZKpP1oVSvouzwFFoQ3C9piKsEMBW9wtLOSaMJe+6gUT9m/FP5XMaJ81Xe7/YVC+N7i5g/frEJWCPaPVmgT7yq6WbDJK39a5WftGizUPzK24ggcU/MAPAAPwAPwADwAD8AD8AA8AA/AA/AAPAAPwAPwADwAD8AD8ADG9lNgn8jigwUF+ziRxQ8Jt78IyrgY1Mh+/8CMkwFVAOCkq2ua7Q/BO3oRTQDb8D3NJkkAEtkmjyQBrDu11/g1UCathyKAskxiA0VXoJJHaqfJJpV22vQAPAAPwAPwADwAD8AD8AA8AA/AA/AAPAAPwAPwADwAD8Aa29w73M/4dyAD4F3mI8b/DFeMw+7azwL/YXL7g7W33/DKTts5tD+OzB0FQT4nYs0t8VfJB4C5hU5bhldFWbvlddZ+TUk0wf7xqZKd5XUsfoB/x5ND1hRqdaEAKfucOYJexw7Z+XL7f4+dsu+L7T+IHbO7dPu3YucsVV0n7LsHIFVfqRU7aHMl1kqxkzYLKjtuApimYxZjRy0R3hquApjU2Qv6rgIYjaOCcuysfXB7BCRjYG4EfD5Uq2aem0MdKVRcnwt6R+k1IGpaoogpamLFdNH5aqZvSBnAwrUDrfSM4AKA2bz/pHYLh7UApr5vNKfkt10CMI1+atP/XMlZPWsATPt9e/rOj24BSK7PuJ5eJ9R2C0DS8R+mfmDNLQDB1BfsrHAKsAhAMgkMkoIOT64BaCUP6qVCY3cANJKe308mA8cAbCTh0JxT7BSAJAQqTNdDxwBUPAAPIAXA3TnA+VWgt8JYyCYA9QSA856g87GA89FgfWGj0BEAxakOVHVbEbqdSiNDtwDMLqUP4xWOAWsATLfDdmZbgz9cAtCY2xxsrbAL2AKgOL8zNL1lflhzBcDsXM9DKkVMnYAdAObONbXTp1xGJ7v0AWwezyVE1JzNkpyPgCruArhOucUOWs3hTOF5DaDkKoD2omPsmA3zX71MnALd7QLDLN/YJUvFPgfutf8uO2/MGRuwAwQ3JoClwC9w6uTk96zA91XPleZHrCokL4+vbpQsN4Qj/DtenazkQnZBEnJeXrxplps/8cNQALlF1sZWUclrMTW21FY9pznQ1PZLXKWjZAZfwpKPumTwBRS5VCL4VjDYSusn8L1gtIXHV2u1y9U6cv8HlCFggMgNe2oAAAAASUVORK5CYII=&#39; x=&#39;0&#39; y=&#39;0&#39; height=&#39;100%25&#39; width=&#39;100%25&#39;/%3E%3C/svg%3E">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="com.infosys.camundaconnectors.files:sftp:1" />
+        <zeebe:ioMapping>
+          <zeebe:input source="sftp.read-file" target="operation" />
+          <zeebe:input source="localhost" target="authentication.hostname" />
+          <zeebe:input source="2222" target="authentication.portNumber" />
+          <zeebe:input source="sftpuser" target="authentication.username" />
+          <zeebe:input source="sftppassword" target="authentication.password" />
+          <zeebe:input source="C:\\Users\\DELL\\.ssh\\known_hosts" target="authentication.knownHostsPath" />
+          <zeebe:input source="=&#34;/upload/test.txt&#34;" target="data.sourceFilePath" />
+        </zeebe:ioMapping>
+        <zeebe:taskHeaders>
+          <zeebe:header key="resultExpression" value="= { fileContent: response }" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1ct7lkd</bpmn:incoming>
+      <bpmn:outgoing>Flow_02uq8xv</bpmn:outgoing>
+    </bpmn:serviceTask>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_0cmhcam">
+      <bpmndi:BPMNShape id="StartEvent_1_di" bpmnElement="StartEvent_1">
+        <dc:Bounds x="152" y="102" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_02l60r4_di" bpmnElement="Event_02l60r4">
+        <dc:Bounds x="422" y="102" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="431" y="145" width="19" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_03r9goc_di" bpmnElement="Activity_Sftp_Connector">
+        <dc:Bounds x="270" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_1ct7lkd_di" bpmnElement="Flow_1ct7lkd">
+        <di:waypoint x="188" y="120" />
+        <di:waypoint x="270" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_02uq8xv_di" bpmnElement="Flow_02uq8xv">
+        <di:waypoint x="370" y="120" />
+        <di:waypoint x="422" y="120" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

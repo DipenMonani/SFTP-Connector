@@ -1,0 +1,11 @@
+services:
+  sftp:
+    image: atmoz/sftp
+    ports:
+      - "2222:22"
+    environment:
+      SFTP_USERS: "sftpuser:sftppassword:1000::upload"
+    volumes:
+      - ./sftp-data:/home/sftpuser/upload
+
+volumes: {}
