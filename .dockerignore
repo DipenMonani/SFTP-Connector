@@ -1,0 +1,13 @@
+.git
+.gitignore
+.maven
+.classpath
+.project
+.settings
+target/classes
+target/test-classes
+*.log
+.DS_Store
+.idea
+*.iml
+README.md
