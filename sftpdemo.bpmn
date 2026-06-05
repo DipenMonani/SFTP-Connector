@@ -13,13 +13,20 @@
       <bpmn:extensionElements>
         <zeebe:taskDefinition type="com.infosys.camundaconnectors.files:sftp:1" />
         <zeebe:ioMapping>
-          <zeebe:input source="sftp.read-file" target="operation" />
+          <zeebe:input source="sftp.s3-to-sftp" target="operation" />
           <zeebe:input source="localhost" target="authentication.hostname" />
           <zeebe:input source="2222" target="authentication.portNumber" />
           <zeebe:input source="sftpuser" target="authentication.username" />
           <zeebe:input source="sftppassword" target="authentication.password" />
           <zeebe:input source="C:\\Users\\DELL\\.ssh\\known_hosts" target="authentication.knownHostsPath" />
-          <zeebe:input source="=&#34;/upload/test.txt&#34;" target="data.sourceFilePath" />
+          <zeebe:input target="data.s3BucketName" />
+          <zeebe:input target="data.s3ObjectKey" />
+          <zeebe:input target="data.awsRegion" />
+          <zeebe:input target="data.awsAccessKeyId" />
+          <zeebe:input target="data.awsSecretAccessKey" />
+          <zeebe:input source="=&#34;/upload&#34;" target="data.remoteDirectory" />
+          <zeebe:input source="replace" target="data.actionIfFileExists" />
+          <zeebe:input source="true" target="data.createRemoteDirIfNotExists" />
         </zeebe:ioMapping>
         <zeebe:taskHeaders>
           <zeebe:header key="resultExpression" value="= { fileContent: response }" />

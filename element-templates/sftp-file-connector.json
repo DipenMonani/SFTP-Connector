@@ -99,6 +99,14 @@
         {
           "name": "Write File",
           "value": "sftp.write-file"
+        },
+        {
+          "name": "Upload File (Local to SFTP)",
+          "value": "sftp.upload-file"
+        },
+        {
+          "name": "Download S3 File to SFTP",
+          "value": "sftp.s3-to-sftp"
         }
       ],
       "group": "operation",
@@ -1008,6 +1016,194 @@
         "type": "zeebe:taskHeader",
         "key": "errorExpression"
       }
+    },
+    {
+      "label": "Local File Path",
+      "description": "Absolute path to the file on the machine running the connector. e.g. D:\\upload\\Hello.txt",
+      "type": "String",
+      "feel": "optional",
+      "group": "inputs",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "data.localFilePath"
+      },
+      "constraints": {
+        "notEmpty": true
+      },
+      "condition": {
+        "property": "operation",
+        "equals": "sftp.upload-file"
+      }
+    },
+    {
+      "label": "Remote Directory",
+      "description": "Destination folder on the SFTP server. e.g. /upload",
+      "type": "String",
+      "feel": "optional",
+      "group": "inputs",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "data.remoteDirectory"
+      },
+      "constraints": {
+        "notEmpty": true
+      },
+      "condition": {
+        "property": "operation",
+        "equals": "sftp.upload-file"
+      }
+    },
+    {
+      "label": "Action If File Exists",
+      "description": "What to do when a file with the same name already exists on the SFTP server",
+      "group": "inputs",
+      "type": "Dropdown",
+      "value": "rename",
+      "choices": [
+        { "name": "Rename",  "value": "rename"  },
+        { "name": "Replace", "value": "replace" },
+        { "name": "Skip",    "value": "skip"    }
+      ],
+      "binding": {
+        "type": "zeebe:input",
+        "name": "data.actionIfFileExists"
+      },
+      "constraints": {
+        "notEmpty": true
+      },
+      "condition": {
+        "property": "operation",
+        "equals": "sftp.upload-file"
+      }
+    },
+    {
+      "label": "Create Remote Dir If Not Exists",
+      "description": "If True, creates the remote directory when it does not exist",
+      "group": "inputs",
+      "type": "Dropdown",
+      "value": "true",
+      "choices": [
+        { "name": "True",  "value": "true"  },
+        { "name": "False", "value": "false" }
+      ],
+      "binding": {
+        "type": "zeebe:input",
+        "name": "data.createRemoteDirIfNotExists"
+      },
+      "condition": {
+        "property": "operation",
+        "equals": "sftp.upload-file"
+      }
+    },
+    {
+      "label": "S3 Bucket Name",
+      "description": "Name of the AWS S3 bucket. e.g. my-data-bucket",
+      "type": "String",
+      "feel": "optional",
+      "group": "inputs",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "data.s3BucketName"
+      },
+      "constraints": { "notEmpty": true },
+      "condition": { "property": "operation", "equals": "sftp.s3-to-sftp" }
+    },
+    {
+      "label": "S3 Object Key",
+      "description": "Full key (path) of the file in S3. e.g. uploads/Hello.txt",
+      "type": "String",
+      "feel": "optional",
+      "group": "inputs",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "data.s3ObjectKey"
+      },
+      "constraints": { "notEmpty": true },
+      "condition": { "property": "operation", "equals": "sftp.s3-to-sftp" }
+    },
+    {
+      "label": "AWS Region",
+      "description": "AWS region where the S3 bucket lives. e.g. us-east-1",
+      "type": "String",
+      "feel": "optional",
+      "group": "inputs",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "data.awsRegion"
+      },
+      "constraints": { "notEmpty": true },
+      "condition": { "property": "operation", "equals": "sftp.s3-to-sftp" }
+    },
+    {
+      "label": "AWS Access Key ID",
+      "description": "IAM Access Key ID. Leave blank to use the default credential chain (env vars / instance profile). Use secrets.AWS_ACCESS_KEY_ID for Camunda secrets.",
+      "type": "String",
+      "feel": "optional",
+      "group": "inputs",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "data.awsAccessKeyId"
+      },
+      "condition": { "property": "operation", "equals": "sftp.s3-to-sftp" }
+    },
+    {
+      "label": "AWS Secret Access Key",
+      "description": "IAM Secret Access Key. Leave blank to use the default credential chain. Use secrets.AWS_SECRET_ACCESS_KEY for Camunda secrets.",
+      "type": "String",
+      "feel": "optional",
+      "group": "inputs",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "data.awsSecretAccessKey"
+      },
+      "condition": { "property": "operation", "equals": "sftp.s3-to-sftp" }
+    },
+    {
+      "label": "Remote Directory",
+      "description": "Destination folder on the SFTP server. e.g. /upload",
+      "type": "String",
+      "feel": "optional",
+      "group": "inputs",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "data.remoteDirectory"
+      },
+      "constraints": { "notEmpty": true },
+      "condition": { "property": "operation", "equals": "sftp.s3-to-sftp" }
+    },
+    {
+      "label": "Action If File Exists",
+      "description": "What to do if the file already exists on the SFTP server",
+      "group": "inputs",
+      "type": "Dropdown",
+      "value": "rename",
+      "choices": [
+        { "name": "Rename",  "value": "rename"  },
+        { "name": "Replace", "value": "replace" },
+        { "name": "Skip",    "value": "skip"    }
+      ],
+      "binding": {
+        "type": "zeebe:input",
+        "name": "data.actionIfFileExists"
+      },
+      "constraints": { "notEmpty": true },
+      "condition": { "property": "operation", "equals": "sftp.s3-to-sftp" }
+    },
+    {
+      "label": "Create Remote Dir If Not Exists",
+      "description": "Create the remote directory on the SFTP server if it does not exist",
+      "group": "inputs",
+      "type": "Dropdown",
+      "value": "true",
+      "choices": [
+        { "name": "True",  "value": "true"  },
+        { "name": "False", "value": "false" }
+      ],
+      "binding": {
+        "type": "zeebe:input",
+        "name": "data.createRemoteDirIfNotExists"
+      },
+      "condition": { "property": "operation", "equals": "sftp.s3-to-sftp" }
     }
   ]
 }

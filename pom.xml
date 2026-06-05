@@ -71,6 +71,19 @@
   			<artifactId>sshj</artifactId>
   			<version>0.35.0</version>
 		</dependency>
+
+        <!-- AWS SDK v2 — S3 client -->
+        <dependency>
+            <groupId>software.amazon.awssdk</groupId>
+            <artifactId>s3</artifactId>
+            <version>2.20.68</version>
+        </dependency>
+        <!-- Lightweight sync HTTP client for AWS SDK (avoids Netty) -->
+        <dependency>
+            <groupId>software.amazon.awssdk</groupId>
+            <artifactId>url-connection-client</artifactId>
+            <version>2.20.68</version>
+        </dependency>
         
         <!-- Test Dependencies -->
         <dependency>

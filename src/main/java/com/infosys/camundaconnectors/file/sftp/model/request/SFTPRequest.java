@@ -13,6 +13,8 @@ import com.infosys.camundaconnectors.file.sftp.service.files.DeleteFileService;
 import com.infosys.camundaconnectors.file.sftp.service.files.ListFilesService;
 import com.infosys.camundaconnectors.file.sftp.service.files.MoveFileService;
 import com.infosys.camundaconnectors.file.sftp.service.files.ReadFileService;
+import com.infosys.camundaconnectors.file.sftp.service.files.S3ToSftpService;
+import com.infosys.camundaconnectors.file.sftp.service.files.UploadFileService;
 import com.infosys.camundaconnectors.file.sftp.service.files.WriteFileService;
 import com.infosys.camundaconnectors.file.sftp.service.folders.CopyFolderService;
 import com.infosys.camundaconnectors.file.sftp.service.folders.CreateFolderService;
@@ -62,7 +64,9 @@ public class SFTPRequest<T extends SFTPRequestData> {
 	            value = MoveFolderService.class,
 	            name = "sftp.move-folder"),
 	        @JsonSubTypes.Type(value = ReadFileService.class, name = "sftp.read-file"),
-	        @JsonSubTypes.Type(value = WriteFileService.class, name = "sftp.write-file")
+	        @JsonSubTypes.Type(value = WriteFileService.class, name = "sftp.write-file"),
+	        @JsonSubTypes.Type(value = UploadFileService.class, name = "sftp.upload-file"),
+	        @JsonSubTypes.Type(value = S3ToSftpService.class, name = "sftp.s3-to-sftp")
 	      })
 	  @Valid
 	  private T data;
