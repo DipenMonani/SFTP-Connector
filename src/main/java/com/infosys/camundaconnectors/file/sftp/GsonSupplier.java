@@ -13,6 +13,8 @@ import com.infosys.camundaconnectors.file.sftp.service.files.DeleteFileService;
 import com.infosys.camundaconnectors.file.sftp.service.files.ListFilesService;
 import com.infosys.camundaconnectors.file.sftp.service.files.MoveFileService;
 import com.infosys.camundaconnectors.file.sftp.service.files.ReadFileService;
+import com.infosys.camundaconnectors.file.sftp.service.files.S3ToSftpService;
+import com.infosys.camundaconnectors.file.sftp.service.files.UploadFileService;
 import com.infosys.camundaconnectors.file.sftp.service.files.WriteFileService;
 import com.infosys.camundaconnectors.file.sftp.service.folders.CopyFolderService;
 import com.infosys.camundaconnectors.file.sftp.service.folders.CreateFolderService;
@@ -33,7 +35,9 @@ public final class GsonSupplier {
           .registerType("sftp.move-file", MoveFileService.class)
           .registerType("sftp.list-folders", ListFoldersService.class)
           .registerType("sftp.write-file", WriteFileService.class)
-          .registerType("sftp.create-folder", CreateFolderService.class);
+          .registerType("sftp.create-folder", CreateFolderService.class)
+          .registerType("sftp.upload-file", UploadFileService.class)
+          .registerType("sftp.s3-to-sftp", S3ToSftpService.class);
 
   private static final Gson GSON =
       new GsonBuilder().registerTypeAdapter(SFTPRequest.class, DESERIALIZER).create();
