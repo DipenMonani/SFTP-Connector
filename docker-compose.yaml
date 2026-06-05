@@ -7,5 +7,27 @@ services:
       SFTP_USERS: "sftpuser:sftppassword:1000::upload"
     volumes:
       - ./sftp-data:/home/sftpuser/upload
+    networks:
+      - camunda
+
+  sftp-connector:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8089:8089"
+    environment:
+      ZEEBE_CLIENT_BROKER_GATEWAY_ADDRESS: "orchestration:26500"
+      ZEEBE_CLIENT_SECURITY_PLAINTEXT: "true"
+    env_file: connector-secrets.txt
+    depends_on:
+      - sftp
+    networks:
+      - camunda
+
+networks:
+  camunda:
+    external: true
+    name: docker-compose-89_camunda
 
 volumes: {}
